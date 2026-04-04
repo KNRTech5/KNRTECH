@@ -7,13 +7,11 @@ import { useRef } from "react";
 /* ================= TEAM DATA ================= */
 
 const team = [
-  { name: "Kratika Solanki", role: "Founder & Creative Director", initials: "KS" },
-  { name: "Nikhil Soni", role: "Lead Developer", initials: "NS" },
-  { name: "Ridhima Mishra", role: "UI/UX Designer", initials: "RM" },
-  { name: "Priyanka prajapati", role: "AI Systems Engineer", initials: "PP" },
-  { name: "Vaibhai Soni", role: "Project Manager", initials: "VS" },
-  { name: "Rishika mishra", role: "Frontend Engineer", initials: "RM" },
-  { name: "Ronak Shukwal", role: "Marketing Strategist", initials: "RS" },
+  { name: "Kratika Solanki", role: "Founder & Creative Director", initials: "KS", image: "/team/kratika-solanki.jpg" },
+  { name: "Nikhil Soni", role: "Lead Developer", initials: "NS", image: "/team/nikhil-soni.jpg" },
+  { name: "Ridhima Mishra", role: "UI/UX Designer", initials: "RM", image: "/team/ridhima-mishra.jpg" },
+  { name: "Rishika mishra", role: "Frontend Engineer", initials: "RM", image: "/team/rishika-mishra.jpg" },
+  { name: "Ronak Shukwal", role: "Marketing Strategist", initials: "RS", image: "/team/ronak-shukwal.jpg" },
 ];
 
 export default function AboutPage() {
@@ -24,13 +22,13 @@ export default function AboutPage() {
 
       <section className="relative min-h-screen flex items-center justify-center text-center px-6">
 
-  <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
 
-    <div className="blob blob1"></div>
-    <div className="blob blob2"></div>
-    <div className="blob blob3"></div>
+          <div className="blob blob1"></div>
+          <div className="blob blob2"></div>
+          <div className="blob blob3"></div>
 
-  </div>
+        </div>
 
         <Image
           src="/about/about-hero.png"
@@ -76,7 +74,7 @@ export default function AboutPage() {
         reverse={false}
       />
 
-     
+
 
       {/* ================= JOURNEY ================= */}
       <SectionBlock
@@ -169,7 +167,7 @@ export default function AboutPage() {
   );
 }
 
-      {/* ================= REUSABLE SECTION BLOCK ================= */}
+{/* ================= REUSABLE SECTION BLOCK ================= */ }
 
 interface SectionBlockProps {
   title: string;
@@ -182,9 +180,8 @@ function SectionBlock({ title, text, image, reverse = false }: SectionBlockProps
   return (
     <section className="py-40 px-6">
       <div
-        className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center ${
-          reverse ? "md:[&>*:first-child]:order-2" : ""
-        }`}
+        className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""
+          }`}
       >
 
         <motion.div
@@ -228,6 +225,7 @@ interface TeamMember {
   name: string;
   role: string;
   initials: string;
+  image?: string;
 }
 
 interface TeamCardProps {
@@ -239,7 +237,7 @@ function TeamCard({ member, index }: TeamCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
-  
+
   const smoothX = useSpring(rotateX, { stiffness: 100, damping: 20 });
   const smoothY = useSpring(rotateY, { stiffness: 100, damping: 20 });
 
@@ -248,14 +246,14 @@ function TeamCard({ member, index }: TeamCardProps) {
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     // Create spotlight variables
     cardRef.current.style.setProperty("--x", `${x}px`);
     cardRef.current.style.setProperty("--y", `${y}px`);
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     rotateX.set(-(y - centerY) / 20);
     rotateY.set((x - centerX) / 20);
   };
@@ -282,18 +280,27 @@ function TeamCard({ member, index }: TeamCardProps) {
       className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.6)] group cursor-pointer"
     >
       {/* Dynamic Avatar Container */}
-      <div 
+      <div
         className="relative h-[380px] bg-gradient-to-b from-[#020805] via-[#04110c] to-[#020805] flex items-center justify-center overflow-hidden"
         style={{ transform: "translateZ(30px)" }}
       >
         {/* Animated Cyber Grid Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,148,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,148,0.04)_1px,transparent_1px)] bg-[size:25px_25px] opacity-10 group-hover:opacity-40 transition-opacity duration-700" />
-        
-        {/* Animated Initial Gradient Text */}
-        <h3 className="text-9xl font-light tracking-tighter mix-blend-screen transition-all duration-700 group-hover:scale-110 text-primary/10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-[length:200%_auto] group-hover:animate-gradientMove group-hover:bg-gradient-to-br group-hover:from-white group-hover:via-primary group-hover:to-green-900 group-hover:drop-shadow-[0_0_30px_rgba(0,255,148,0.5)]">
-          {member.initials}
-        </h3>
-        
+
+        {/* Profile Image or Initials Logo */}
+        {member.image ? (
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+          />
+        ) : (
+          <h3 className="text-9xl font-light tracking-tighter mix-blend-screen transition-all duration-700 group-hover:scale-110 text-primary/10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-[length:200%_auto] group-hover:animate-gradientMove group-hover:bg-gradient-to-br group-hover:from-white group-hover:via-primary group-hover:to-green-900 group-hover:drop-shadow-[0_0_30px_rgba(0,255,148,0.5)]">
+            {member.initials}
+          </h3>
+        )}
+
         {/* Spotlight Follows Mouse Pointer */}
         <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition duration-700 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(0,255,148,0.2),transparent_70%)]" />
 
@@ -301,7 +308,7 @@ function TeamCard({ member, index }: TeamCardProps) {
       </div>
 
       {/* Floating Meta Details */}
-      <div 
+      <div
         className="p-8 relative bg-black/50 backdrop-blur-md"
         style={{ transform: "translateZ(50px)" }}
       >
@@ -314,9 +321,9 @@ function TeamCard({ member, index }: TeamCardProps) {
       </div>
 
       {/* Pulsating Neon Border on Hover */}
-      <div 
-        className="absolute inset-0 rounded-3xl border border-primary/0 group-hover:border-primary/50 transition duration-500 shadow-[0_0_0px_rgba(0,255,148,0)] group-hover:shadow-[0_0_80px_rgba(0,255,148,0.35)] pointer-events-none" 
-        style={{ transform: "translateZ(0px)" }} 
+      <div
+        className="absolute inset-0 rounded-3xl border border-primary/0 group-hover:border-primary/50 transition duration-500 shadow-[0_0_0px_rgba(0,255,148,0)] group-hover:shadow-[0_0_80px_rgba(0,255,148,0.35)] pointer-events-none"
+        style={{ transform: "translateZ(0px)" }}
       />
     </motion.div>
   );
