@@ -277,7 +277,7 @@ function TeamCard({ member, index }: TeamCardProps) {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={clearRotation}
-      className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.6)] group cursor-pointer"
+      className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.6)] group cursor-pointer"
     >
       {/* Dynamic Avatar Container */}
       <div
