@@ -119,7 +119,7 @@ export default function AdminLogin() {
               disabled={loading}
               whileHover={{ scale: loading ? 1 : 1.02 }}
               whileTap={{ scale: loading ? 1 : 0.98 }}
-              className="w-full py-4 bg-primary text-black rounded-full font-bold text-lg shadow-[0_0_40px_rgba(0,255,148,0.6)] hover:shadow-[0_0_60px_rgba(0,255,148,0.8)] transition disabled:opacity-50"
+              className="w-full py-4 bg-primary text-white rounded-full font-bold text-lg shadow-[0_0_40px_rgba(0,255,148,0.6)] hover:shadow-[0_0_60px_rgba(0,255,148,0.8)] transition disabled:opacity-50"
             >
               {loading ? "Logging in..." : "Access Admin Panel"}
             </motion.button>
