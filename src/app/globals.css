@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #020805;
+  color: white;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  will-change: auto;
+}
+
+/* ============================================
+   BLOB ANIMATIONS
+   ============================================ */
+@keyframes blobMove1 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(200px, -150px) scale(1.05); }
+  66% { transform: translate(-100px, 100px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blobMove2 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-150px, 200px) scale(0.95); }
+  66% { transform: translate(100px, -80px) scale(1.05); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob1 {
+  animation: blobMove1 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-blob2 {
+  animation: blobMove2 25s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ============================================
+   FLOATING BLOB ELEMENTS (Section-level)
+   ============================================ */
+.blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,255,148,0.15) 0%, rgba(0,255,148,0) 70%);
+  border-radius: 100%;
+  animation: moveBlob 18s infinite alternate ease-in-out;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.blob1 { top: -150px; left: -100px; }
+.blob2 { bottom: -150px; right: -100px; animation-duration: 25s; }
+.blob3 { top: 40%; left: 40%; animation-duration: 12s; }
+
+@keyframes moveBlob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  25% { transform: translate(200px, -150px) scale(1.1); }
+  50% { transform: translate(-150px, 200px) scale(0.9); }
+  75% { transform: translate(100px, 100px) scale(1.05); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* ============================================
+   FLOAT ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-20px) translateZ(0); }
+  100% { transform: translateY(0px) translateZ(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floatSlow {
+  0% { transform: translate(-10%, -10%) translateZ(0); }
+  50% { transform: translate(20%, 10%) translateZ(0); }
+  100% { transform: translate(-10%, -10%) translateZ(0); }
+}
+
+.animate-floatSlow {
+  animation: floatSlow 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ============================================
+   FADE UP
+   ============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* ============================================
+   SHINE / BEAM
+   ============================================ */
+@keyframes shine {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.animate-shine {
+  animation: shine 5s infinite linear;
+}
+
+@keyframes beam {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.animate-beam {
+  animation: beam 6s linear infinite;
+}
+
+/* ============================================
+   PULSE ANIMATIONS
+   ============================================ */
+@keyframes pulseSlow {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 6s infinite ease-in-out;
+}
+
+/* ============================================
+   GRADIENT MOVE
+   ============================================ */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradientMove {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* ============================================
+   GLOW MOVE
+   ============================================ */
+@keyframes glowMove {
+  0% { transform: translate(-20%, -20%); }
+  50% { transform: translate(60%, 40%); }
+  100% { transform: translate(-20%, -20%); }
+}
+
+.animate-glowMove {
+  animation: glowMove 20s ease-in-out infinite;
+}
+
+/* ============================================
+   FLASH
+   ============================================ */
+@keyframes flash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-flash {
+  animation: flash 0.5s ease-out;
+}
+
+/* ============================================
+   BORDER PULSE
+   ============================================ */
+@keyframes borderPulse {
+  0% { box-shadow: 0 0 20px rgba(0,255,148,0.4); }
+  50% { box-shadow: 0 0 60px rgba(0,255,148,0.9); }
+  100% { box-shadow: 0 0 20px rgba(0,255,148,0.4); }
+}
+
+.animate-borderPulse {
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+/* ============================================
+   AI GRID (moving)
+   ============================================ */
+.ai-grid {
+  background-image:
+    linear-gradient(rgba(0,255,148,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,148,0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  will-change: transform;
+}
+
+@keyframes gridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(50px); }
+}
+
+/* ============================================
+   GLOW TEXT
+   ============================================ */
+.glow-text {
+  text-shadow:
+    0 0 15px rgba(0,255,148,0.8),
+    0 0 40px rgba(0,255,148,0.4),
+    0 0 80px rgba(0,255,148,0.2);
+}
+
+.subtle-glow {
+  text-shadow:
+    0 0 10px rgba(0,255,148,0.5),
+    0 0 20px rgba(0,255,148,0.2);
+}
+
+/* ============================================
+   LIGHTNING BURST
+   ============================================ */
+.lightning-burst {
+  animation: burstFlash 0.4s ease-out;
+}
+
+@keyframes burstFlash {
+  0% { box-shadow: 0 0 0px rgba(0,255,148,0); }
+  50% { box-shadow: 0 0 80px rgba(0,255,148,1); }
+  100% { box-shadow: 0 0 20px rgba(0,255,148,0.5); }
+}
+
+/* ============================================
+   ENERGY WAVE
+   ============================================ */
+.energy-wave {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,255,148,0.4) 0%,
+    transparent 70%
+  );
+  animation: waveMove 6s ease-in-out infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(-20%) scaleX(1); }
+  50% { transform: translateX(20%) scaleX(1.2); }
+  100% { transform: translateX(-20%) scaleX(1); }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020805;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FF94;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+  background: #00FF94;
+}
+
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+::selection {
+  background: rgba(0, 255, 148, 0.3);
+  color: white;
+}
