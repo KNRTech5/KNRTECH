@@ -22,17 +22,14 @@ export default function AdminLogin() {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/admin/dashboard",
+        redirect: true,
       });
 
       if (result?.error) {
         setError(result.error);
         setLoading(false);
         return;
-      }
-
-      if (result?.ok) {
-        router.push("/admin/dashboard");
       }
     } catch (err) {
       setError("Login failed. Please try again.");

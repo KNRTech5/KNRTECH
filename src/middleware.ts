@@ -8,7 +8,7 @@ export default withAuth(
 
     // If user is logged in and tries to access login page, redirect to admin dashboard
     if (pathname.startsWith("/admin/login") && token) {
-      return NextResponse.redirect(new URL("/admin", req.url));
+      return NextResponse.redirect(new URL("/admin/dashboard", req.url));
     }
 
     return NextResponse.next();
