@@ -98,7 +98,8 @@ export const authOptions: any = {
     maxAge: 7 * 24 * 60 * 60, // 7 days
   },
   secret: process.env.NEXTAUTH_SECRET,
-  debug: process.env.NODE_ENV === "development",
+  trustHost: true,
+  debug: process.env.NODE_ENV === "development" || process.env.VERCEL === "1",
 };
 
 const handler = NextAuth(authOptions);
