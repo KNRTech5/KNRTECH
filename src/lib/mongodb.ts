@@ -21,13 +21,14 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      connectTimeoutMS: 10000, // 10 seconds timeout
-      family: 4, // Force IPv4 to avoid common SRV resolution issues
+      connectTimeoutMS: 20000, // 20 seconds timeout for Vercel
+      maxPoolSize: 10,
     };
 
     cached.promise = mongoose
       .connect(MONGODB_URI as string, opts)
       .then((mongoose) => {
+        console.log("=> MongoDB connected successfully");
         return mongoose;
       });
   }
@@ -36,6 +37,7 @@ async function connectDB() {
     cached.conn = await cached.promise;
   } catch (e) {
     cached.promise = null;
+    console.error("=> MongoDB connection error:", e);
     throw e;
   }
 
