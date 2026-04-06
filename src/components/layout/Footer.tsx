@@ -81,7 +81,7 @@ export default function Footer() {
             <div className="space-y-4 text-lightgray">
               <p>📍 India</p>
               <p>📧 techknr5@gmail.com</p>
-              <p>📞 +91 98765 43210</p>
+              <p>📞 +91 9351331599</p>
             </div>
 
             {/* Social Icons */}
