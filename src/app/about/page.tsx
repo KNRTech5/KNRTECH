@@ -223,8 +223,8 @@ function SectionBlock({ title, text, image, reverse = false }: SectionBlockProps
 
 interface TeamMember {
   name: string;
-  role: string;
-  initials: string;
+  role?: string;
+  initials?: string;
   image?: string;
 }
 
