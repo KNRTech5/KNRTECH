@@ -86,44 +86,44 @@ export default function ContactPage() {
       }}
     >
 
-       {/* ================= HERO ================= */}
-      
-            <section className="relative min-h-screen flex items-center justify-center text-center px-6">
-      
+      {/* ================= HERO ================= */}
+
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6">
+
         <div className="absolute inset-0 -z-10 overflow-hidden">
-      
+
           <div className="blob blob1"></div>
           <div className="blob blob2"></div>
           <div className="blob blob3"></div>
-      
+
         </div>
-      
-              <Image
-                src="/contact/contact-hero.png"
-                alt="Agency"
-                fill
-                className="object-cover opacity-100"
-              />
-      
-              <div className="absolute inset-0 bg-black/70" />
-      
-              <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                className="relative z-10 max-w-4xl"
-              >
-                <h1 className="text-6xl md:text-8xl font-light mb-8">
-                Let’s Build<br />
-                <span className="bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent animate-pulse">.....Digital Excellence...</span>
-              </h1>
-      
-                <p className="text-lightgray max-w-3xl text-xl">
-               Start your transformation today.
-              </p>
-              </motion.div>
-      
-            </section>
+
+        <Image
+          src="/contact/contact-hero.png"
+          alt="Agency"
+          fill
+          className="object-cover opacity-100"
+        />
+
+        <div className="absolute inset-0 bg-black/70" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 max-w-4xl"
+        >
+          <h1 className="text-6xl md:text-8xl font-light mb-8">
+            Let’s Build<br />
+            <span className="bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent animate-pulse">.....Digital Excellence...</span>
+          </h1>
+
+          <p className="text-lightgray max-w-3xl text-xl">
+            Start your transformation today.
+          </p>
+        </motion.div>
+
+      </section>
 
 
       {/* ================= BACKGROUND ================= */}
@@ -237,7 +237,7 @@ export default function ContactPage() {
             className="space-y-8"
           >
             <InfoCard title="Email" value="techknr5@gmail.com" />
-            <InfoCard title="WhatsApp" value="+91 00000 00000" />
+            <InfoCard title="WhatsApp" value="+91 9351331599" />
             <InfoCard title="Location" value="Global Remote Studio" />
           </motion.div>
 
@@ -278,9 +278,8 @@ function FloatingInput({
         className="w-full bg-white/5 border border-white/10 rounded-xl p-5 pt-7 focus:border-primary outline-none transition"
       />
       <label
-        className={`absolute left-5 transition-all duration-300 ${
-          focus ? "top-2 text-xs text-primary" : "top-5 text-lightgray"
-        }`}
+        className={`absolute left-5 transition-all duration-300 ${focus ? "top-2 text-xs text-primary" : "top-5 text-lightgray"
+          }`}
       >
         {label}
       </label>
