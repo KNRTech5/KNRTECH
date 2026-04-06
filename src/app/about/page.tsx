@@ -7,11 +7,11 @@ import { useRef } from "react";
 /* ================= TEAM DATA ================= */
 
 const team = [
-  { name: "Kratika Solanki", role: "Founder & Creative Director", initials: "KS", image: "/team/team-1.jpeg" },
-  { name: "Nikhil Soni", role: "Lead Developer", initials: "NS", image: "/team/team-2.webp" },
-  { name: "Ridhima Mishra", role: "UI/UX Designer", initials: "RM", image: "/team/team-3.jpeg" },
-  { name: "Rishika mishra", role: "Frontend Engineer", initials: "RM", image: "/team/team-4.jpeg" },
-  { name: "Ronak Shukwal", role: "Marketing Strategist", initials: "RS", image: "/team/team-5.jpeg" },
+  { name: "Kratika Solanki", image: "/team/team-1.jpeg" },
+  { name: "Nikhil Soni", image: "/team/team-2.webp" },
+  { name: "Ridhima Mishra", image: "/team/team-3.jpeg" },
+  { name: "Rishika mishra", image: "/team/team-4.jpeg" },
+  { name: "Ronak Shukwal", image: "/team/team-5.jpeg" },
 ];
 
 export default function AboutPage() {
